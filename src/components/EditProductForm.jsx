@@ -11,7 +11,7 @@ const editProductValidationSchema = Yup.object().shape({
   newName: Yup.string().required(),
 });
 
-export const EditProductForm = ({ onSubmit, productInfo }) => {
+export const EditProductForm = ({ onSubmit, onCancel, productInfo }) => {
   return (
     <Formik
       initialValues={{
@@ -28,6 +28,9 @@ export const EditProductForm = ({ onSubmit, productInfo }) => {
           <Input name="oldName" readOnly />
           <Input name="newName" />
           <h3>edit your product</h3>
+          <Button htmlType="button" onClick={onCancel}>
+            Cancel
+          </Button>
           <Button htmlType="submit" disabled={!dirty || !isValid}>
             Submit Changes
           </Button>
@@ -40,4 +43,5 @@ export const EditProductForm = ({ onSubmit, productInfo }) => {
 EditProductForm.propTypes = {
   productInfo: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
 };

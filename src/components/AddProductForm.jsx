@@ -10,7 +10,7 @@ const productValidationSchema = Yup.object().shape({
   name: Yup.string().required(),
 });
 
-export const ProductForm = ({ productId, onSubmit }) => {
+export const AddProductForm = ({ productId, onSubmit }) => {
   return (
     <Formik
       initialValues={{ id: productId, name: "" }}
@@ -37,7 +37,7 @@ export const ProductForm = ({ productId, onSubmit }) => {
   );
 };
 
-ProductForm.propTypes = {
+AddProductForm.propTypes = {
   productId: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

@@ -16,5 +16,15 @@ export const EditProduct = () => {
     history.push("/scan-your-products");
   };
 
-  return <EditProductForm productInfo={productInfo} onSubmit={onSubmit} />;
+  const onCancel = () => {
+    history.push("/scan-your-products");
+  };
+
+  return (
+    <EditProductForm
+      productInfo={productInfo}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+    />
+  );
 };
