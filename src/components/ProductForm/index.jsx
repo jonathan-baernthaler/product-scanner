@@ -6,20 +6,20 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const productValidationSchema = Yup.object().shape({
-  productId: Yup.string().required(),
+  id: Yup.string().required(),
   name: Yup.string().required(),
 });
 
 export const ProductForm = ({ productId, onSubmit }) => {
   return (
     <Formik
-      initialValues={{ productId, name: "" }}
+      initialValues={{ id: productId, name: "" }}
       onSubmit={onSubmit}
       validationSchema={productValidationSchema}
     >
       {({ dirty, isValid }) => (
         <Form>
-          <Input name="productId" readOnly />
+          <Input name="id" readOnly />
           <Input name="name" />
           <h3>give your product a name</h3>
           <Button htmlType="submit" disabled={!dirty || !isValid}>

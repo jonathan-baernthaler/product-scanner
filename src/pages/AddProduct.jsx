@@ -10,6 +10,8 @@ export const AddProduct = () => {
 
   const onDetect = (productId) => setProductId(productId);
 
+  console.log(productId, "here");
+
   return (
     <div>
       {productId ? (
