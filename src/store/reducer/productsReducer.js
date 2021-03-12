@@ -1,8 +1,8 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-const addProduct = createAction("products/addProduct");
-const editProduct = createAction("products/editProduct");
-const removeProduct = createAction("products/removeProduct");
+export const addProduct = createAction("products/addProduct");
+export const editProduct = createAction("products/editProduct");
+export const removeProduct = createAction("products/removeProduct");
 
 const initialState = { products: [] };
 
