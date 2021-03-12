@@ -9,7 +9,14 @@ export const AddProduct = () => {
 
   return (
     <div>
-      {productId ? <ProductForm /> : <BarcodeScanner onDetect={onDetect} />}
+      {productId ? (
+        <ProductForm
+          productId={productId}
+          onSubmit={(product) => console.log({ product })}
+        />
+      ) : (
+        <BarcodeScanner onDetect={onDetect} />
+      )}
     </div>
   );
 };
