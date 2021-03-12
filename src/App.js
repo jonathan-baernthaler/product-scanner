@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home, AddProduct, EditProduct, Checkout, NotFound } from "./pages";
 import { Provider } from "react-redux";
 import store from "./store/configureStore";
+import "antd/dist/antd.css";
 
 function App() {
   return (
