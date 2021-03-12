@@ -1,27 +1,38 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BarcodeScanner } from "../components/BarcodeScanner";
+import { EditProductForm } from "../components/EditProductForm";
 import { ProductForm } from "../components/ProductForm";
-import { addProduct } from "../store/reducer/productsReducer";
+import { addProduct, editProduct } from "../store/reducer/productsReducer";
+import { getProductById } from "../store/selector/productsSelector";
 
 export const AddProduct = () => {
   const dispatch = useDispatch();
   const [productId, setProductId] = useState("");
+  const productInfo = useSelector(getProductById(productId));
 
   const onDetect = (productId) => setProductId(productId);
 
-  console.log(productId, "here");
+  const onAddProduct = (product) => {
+    dispatch(addProduct(product));
+    setProductId("");
+  };
+  const onEditProduct = (product) => {
+    dispatch(editProduct(product));
+    setProductId("");
+  };
+
+  if (!productId) {
+    return <BarcodeScanner onDetect={onDetect} />;
+  }
 
   return (
-    <div>
-      {productId ? (
-        <ProductForm
-          productId={productId}
-          onSubmit={(product) => dispatch(addProduct(product))}
-        />
+    <>
+      {productInfo ? (
+        <EditProductForm productInfo={productInfo} onSubmit={onEditProduct} />
       ) : (
-        <BarcodeScanner onDetect={onDetect} />
+        <ProductForm productId={productId} onSubmit={onAddProduct} />
       )}
-    </div>
+    </>
   );
 };

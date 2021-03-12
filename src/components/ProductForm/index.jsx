@@ -14,7 +14,13 @@ export const ProductForm = ({ productId, onSubmit }) => {
   return (
     <Formik
       initialValues={{ id: productId, name: "" }}
-      onSubmit={onSubmit}
+      onSubmit={(values) => {
+        try {
+          onSubmit(values);
+        } catch (error) {
+          console.log(error, "error msg");
+        }
+      }}
       validationSchema={productValidationSchema}
     >
       {({ dirty, isValid }) => (

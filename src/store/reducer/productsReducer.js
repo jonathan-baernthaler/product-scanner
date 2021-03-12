@@ -11,6 +11,13 @@ const initialState = {
 export const productsReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(addProduct, (state, action) => {
+      const isProductInState = state.products.find((product) => {
+        return product.id === action.payload.id;
+      });
+
+      if (isProductInState) {
+        throw new Error("Product already exists");
+      }
       state.products.push(action.payload);
     })
     .addCase(editProduct, (state, action) => {
