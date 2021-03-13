@@ -5,7 +5,7 @@ export const editProduct = createAction("products/editProduct");
 export const removeProduct = createAction("products/removeProduct");
 
 const initialState = {
-  products: [{ id: "8809653770863", name: "cheeze" }],
+  products: [],
 };
 
 export const productsReducer = createReducer(initialState, (builder) => {

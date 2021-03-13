@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Quagga from "quagga";
 import config from "./config.json";
+import styled from "styled-components";
 
 export const BarcodeScanner = ({ onDetect }) => {
   useEffect(() => {
@@ -19,9 +20,15 @@ export const BarcodeScanner = ({ onDetect }) => {
     };
   }, [onDetect]);
 
-  return <div id="barcodeScanner" />;
+  return <Scanner id="barcodeScanner" />;
 };
 
 BarcodeScanner.propTypes = {
   onDetect: PropTypes.func.isRequired,
 };
+
+const Scanner = styled.div`
+  .drawingBuffer {
+    display: none;
+  }
+`;
