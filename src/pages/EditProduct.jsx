@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { getProductById } from "../store/selector/productsSelector";
 import { editProduct } from "../store/reducer/productsReducer";
-import { EditProductForm } from "../components/EditProductForm";
+import { EditProductForm } from "../components/Forms";
 
 export const EditProduct = () => {
   const { productId } = useParams();

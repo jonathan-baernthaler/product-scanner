@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BarcodeScanner } from "../components/BarcodeScanner";
-import { EditProductForm } from "../components/EditProductForm";
-import { AddProductForm } from "../components/AddProductForm";
+import { EditProductForm, AddProductForm } from "../components/Forms";
 import { addProduct, editProduct } from "../store/reducer/productsReducer";
 import { getProductById } from "../store/selector/productsSelector";
+import styled from "styled-components";
 
 export const AddProduct = () => {
   const dispatch = useDispatch();
@@ -25,11 +25,16 @@ export const AddProduct = () => {
   const onCancel = () => setProductId("");
 
   if (!productId) {
-    return <BarcodeScanner onDetect={onDetect} />;
+    return (
+      <Container>
+        <Subtitle>scan your product</Subtitle>
+        <BarcodeScanner onDetect={onDetect} />
+      </Container>
+    );
   }
 
   return (
-    <>
+    <Container>
       {productInfo ? (
         <EditProductForm
           productInfo={productInfo}
@@ -37,8 +42,27 @@ export const AddProduct = () => {
           onCancel={onCancel}
         />
       ) : (
-        <AddProductForm productId={productId} onSubmit={onAddProduct} />
+        <AddProductForm
+          productId={productId}
+          onSubmit={onAddProduct}
+          onCancel={onCancel}
+        />
       )}
-    </>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 50px;
+`;
+
+const Subtitle = styled.h3`
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 25px;
+`;
