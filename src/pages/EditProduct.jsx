@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router";
 import { getProductById } from "../store/selector/productsSelector";
 import { editProduct } from "../store/reducer/productsReducer";
 import { EditProductForm } from "../components/Forms";
+import styled from "styled-components";
 
 export const EditProduct = () => {
   const { productId } = useParams();
@@ -21,10 +22,21 @@ export const EditProduct = () => {
   };
 
   return (
-    <EditProductForm
-      productInfo={productInfo}
-      onSubmit={onSubmit}
-      onCancel={onCancel}
-    />
+    <Container>
+      <EditProductForm
+        productInfo={productInfo}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+      />
+    </Container>
   );
 };
+
+const Container = styled.div`
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 50px;
+`;

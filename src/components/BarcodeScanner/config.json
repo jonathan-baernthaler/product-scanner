@@ -3,8 +3,8 @@
     "type": "LiveStream",
     "target": "#barcodeScanner",
     "constraints": {
-      "width": 500,
-      "height": 250,
+      "width": { "min": 450 },
+      "height": { "min": 300 },
       "facingMode": "environment"
     }
   },
